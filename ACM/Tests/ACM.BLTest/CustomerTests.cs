@@ -84,11 +84,46 @@ namespace ACM.BLTest
             Customer.InstanceCount += 1;
 
             //-- Act
-            
+
 
             //-- Assert
             Assert.AreEqual(3, Customer.InstanceCount);
 
         }
+
+        [TestMethod]
+        public void ValidateValid()
+        {
+            //Arrange
+            Customer c1 = new Customer();
+            c1.LastName = "George";
+            c1.EmailAddress = "george.calin@gmail.com";
+            bool expected = true;
+
+            //Act
+            bool actual = c1.Validate();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ValidateNotValid()
+        {
+            //Arrange
+            Customer c1 = new Customer()
+            {
+                EmailAddress = "george.calin@gmail.com"
+            };
+            bool expected = false;
+
+            //Act
+            bool actual = c1.Validate();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 }
