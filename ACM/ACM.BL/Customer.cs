@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lacon.Common;
+using System;
 using System.Collections.Generic;
 
 namespace ACM.BL
@@ -6,7 +7,7 @@ namespace ACM.BL
     /// <summary>
     /// 
     /// </summary>
-    public class Customer
+    public class Customer : ILoggable
     {
         public Customer():this(0)
         {
@@ -73,6 +74,7 @@ namespace ACM.BL
 
         public override string ToString() => FullName;
 
+        public string Log() => $"{CustomerID}:{FullName} and {EmailAddress}";
 
     }
 }

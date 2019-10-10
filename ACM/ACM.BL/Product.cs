@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Lacon.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ACM.BL
 {
-    public class Product : EntityBase
+    public class Product : EntityBase,ILoggable
     {
         public Product()
         {
@@ -18,7 +19,15 @@ namespace ACM.BL
         public decimal? CurrentPrice { get; set; }
         public string ProductDescription { get; set; }
         public int ProductId { get; private set; }
-        public string ProductName { get; set; }
+
+        private string productName;
+        public string ProductName
+        {
+            get
+            {
+                return StringHandler.InsertSpaces(productName);
+            }
+        }
 
         /// <summary>
         /// Retrieve one product.
@@ -56,6 +65,8 @@ namespace ACM.BL
         }
 
         public override string ToString() => ProductName;
+
+        public string Log() =>$"{ProductDescription} and {ProductName} ";
 
     }
 }
